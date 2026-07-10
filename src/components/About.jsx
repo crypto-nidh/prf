@@ -18,7 +18,7 @@ export default function About() {
             <h2>About Me</h2>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '3rem' }}>
+          <div className="about-grid">
             <div>
               {ABOUT.paragraphs.map((p, i) => (
                 <p key={i} className="mb-2" dangerouslySetInnerHTML={{ __html: p }}></p>
@@ -48,7 +48,7 @@ export default function About() {
             </div>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1.5rem', marginTop: '4rem' }}>
+          <div className="about-cards">
             {ABOUT.cards.map((c, i) => (
               <motion.div 
                 key={i}

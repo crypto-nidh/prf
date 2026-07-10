@@ -19,7 +19,7 @@ export default function Certifications() {
             <h2>Certifications</h2>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '1.5rem', marginBottom: '4rem' }}>
+          <div className="certs-grid">
             {CERTIFICATIONS.map((cert, i) => (
               <motion.div 
                 key={i}
@@ -39,6 +39,10 @@ export default function Certifications() {
                   <img 
                     src={cert.image} 
                     alt={cert.name}
+                    loading="lazy"
+                    decoding="async"
+                    width={400}
+                    height={180}
                     style={{ 
                       width: '100%', 
                       height: '180px', 
@@ -63,9 +67,9 @@ export default function Certifications() {
             </h3>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
               {ACHIEVEMENTS.map((a, i) => (
-                <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '1rem', borderBottom: '1px dashed var(--panel-border)', paddingBottom: '0.5rem' }}>
-                  <div style={{ width: '60px', color: 'var(--neon-magenta)', fontWeight: 'bold' }}>{a.rank}</div>
-                  <div>
+                <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem', borderBottom: '1px dashed var(--panel-border)', paddingBottom: '0.5rem', flexWrap: 'wrap' }}>
+                  <div style={{ width: '60px', flexShrink: 0, color: 'var(--neon-magenta)', fontWeight: 'bold' }}>{a.rank}</div>
+                  <div style={{ minWidth: 0, flex: 1 }}>
                     <div style={{ color: 'var(--text-main)', fontSize: '0.9rem' }}>{a.title}</div>
                     <div style={{ color: 'var(--text-dim)', fontSize: '0.8rem' }}>{a.detail}</div>
                   </div>

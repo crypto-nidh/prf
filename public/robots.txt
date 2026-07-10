@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Disallow build tooling / source if ever exposed
+Disallow: /src/
+Disallow: /node_modules/
+
+Sitemap: https://nidhikathayat.netlify.app/sitemap.xml

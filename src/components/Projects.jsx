@@ -18,7 +18,7 @@ export default function Projects() {
             <h2>Projects</h2>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2rem' }}>
+          <div className="projects-grid">
             {PROJECTS.map((proj, i) => (
               <motion.div 
                 key={i}
@@ -27,7 +27,7 @@ export default function Projects() {
                 style={{ display: 'flex', flexDirection: 'column', gap: '1rem', padding: 0, overflow: 'hidden' }}
               >
                 <div style={{ position: 'relative', height: '200px', overflow: 'hidden' }}>
-                  <img src={proj.image} alt={proj.title} style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'brightness(0.7) contrast(1.2)' }} />
+                  <img src={proj.image} alt={proj.title} loading="lazy" decoding="async" width={640} height={200} style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'brightness(0.7) contrast(1.2)' }} />
                   <div style={{ 
                     position: 'absolute', top: '10px', right: '10px', 
                     background: proj.sev_class === 'sev-high' ? 'var(--neon-magenta)' : 'var(--neon-cyan)',

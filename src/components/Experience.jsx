@@ -18,11 +18,8 @@ export default function Experience() {
             <h2>Experience</h2>
           </div>
 
-          <div style={{ position: 'relative', paddingLeft: '40px' }}>
-            <div style={{ 
-              position: 'absolute', left: '11px', top: 0, bottom: 0, width: '2px', 
-              background: 'repeating-linear-gradient(to bottom, var(--neon-cyan) 0, var(--neon-cyan) 10px, transparent 10px, transparent 20px)'
-            }}></div>
+          <div className="timeline">
+            <div className="timeline-line"></div>
             
             {EXPERIENCE.map((job, i) => (
               <motion.div 
@@ -33,22 +30,20 @@ export default function Experience() {
                 transition={{ duration: 0.5, delay: i * 0.2 }}
                 style={{ position: 'relative', marginBottom: '3rem' }}
               >
-                <div style={{
-                  position: 'absolute', left: '-40px', top: '10px',
-                  width: '24px', height: '24px', background: 'var(--bg-dark)',
-                  border: '2px solid var(--neon-cyan)', display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  fontSize: '0.8rem', color: 'var(--neon-cyan)'
-                }}>
+                <div className="timeline-marker">
                   {i + 1}
                 </div>
                 
                 <div className="cyber-panel">
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '2rem', marginBottom: '1.5rem' }}>
+                  <div className="job-header">
                     {job.logo && (
                       <img 
                         src={job.logo} 
                         alt={job.company}
-                        style={{ width: '100px', height: '100px', objectFit: 'contain' }}
+                        loading="lazy"
+                        decoding="async"
+                        width={100}
+                        height={100}
                       />
                     )}
                     <div>
@@ -57,7 +52,7 @@ export default function Experience() {
                     </div>
                   </div>
                   
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1.5rem' }}>
+                  <div className="job-meta">
                     <div style={{ color: 'var(--text-dim)', fontSize: '0.9rem' }}>{job.date}</div>
                     <div style={{ display: 'inline-block', padding: '4px 8px', border: '1px solid var(--neon-green)', color: 'var(--neon-green)', fontSize: '0.7rem' }}>
                       ✓ COMPLETED
