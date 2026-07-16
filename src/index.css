@@ -43,12 +43,33 @@
     padding: 0;
 }
 
+.skip-link {
+    position: absolute;
+    top: -100px;
+    left: 1rem;
+    z-index: 1000;
+    padding: 0.75rem 1rem;
+    background: var(--neon-cyan);
+    color: var(--bg-dark);
+    font-family: inherit;
+    text-decoration: none;
+    transition: top 0.2s;
+}
+
+.skip-link:focus {
+    top: 1rem;
+    outline: 2px solid var(--neon-magenta);
+    outline-offset: 2px;
+}
+
 body {
     background-color: transparent;
     color: var(--text-main);
     font-family: 'Share Tech Mono', monospace;
     overflow-x: hidden;
     line-height: 1.6;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
 }
 
 
@@ -66,10 +87,11 @@ h6 {
 }
 
 h2 {
-    font-size: 2.5rem;
-    margin-bottom: 3rem;
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    margin-bottom: clamp(1.5rem, 4vw, 3rem);
     color: var(--neon-cyan);
     text-shadow: 0 0 10px rgba(0, 229, 255, 0.3);
+    word-wrap: break-word;
 }
 
 .mono {
@@ -93,26 +115,37 @@ a:hover {
 .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 2rem;
+    padding: 0 clamp(1rem, 4vw, 2rem);
+    width: 100%;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
 }
 
 
 /* Cyber Button */
 
 .cyber-btn {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
     padding: 12px 24px;
     background: transparent;
     color: var(--neon-cyan);
     border: 1px solid var(--neon-cyan);
     text-transform: uppercase;
     font-family: inherit;
-    font-size: 1rem;
+    font-size: clamp(0.75rem, 2.5vw, 1rem);
     cursor: pointer;
     position: relative;
     overflow: hidden;
     transition: all 0.3s;
     box-shadow: inset 0 0 0 0 var(--neon-cyan);
+    white-space: nowrap;
+    text-align: center;
 }
 
 .cyber-btn:hover {
@@ -136,12 +169,13 @@ a:hover {
 .cyber-panel {
     background: var(--bg-panel);
     border: 1px solid var(--panel-border);
-    padding: 3rem;
+    padding: clamp(1.25rem, 4vw, 3rem);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     position: relative;
     border-radius: 0;
     /* Sharp corners */
+    width: 100%;
 }
 
 .cyber-panel::before {
@@ -277,9 +311,240 @@ a:hover {
 }
 
 section {
-    padding: 200px 0;
+    padding: clamp(80px, 15vw, 200px) 0;
     position: relative;
     z-index: 1;
+}
+
+/* —— Layout helpers —— */
+
+.site-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+    position: relative;
+}
+
+.site-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: bold;
+    flex-shrink: 0;
+    z-index: 2;
+}
+
+.mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--neon-cyan);
+    font-size: 1.5rem;
+    cursor: pointer;
+    z-index: 2;
+    padding: 0.25rem;
+    line-height: 1;
+}
+
+.nav-links {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.hero-section {
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding-top: 90px;
+    padding-bottom: 60px;
+    overflow: hidden;
+}
+
+.hero-layout {
+    display: flex;
+    flex-wrap: wrap;
+    gap: clamp(1.5rem, 4vw, 2.5rem);
+    align-items: flex-end;
+}
+
+.hero-photo {
+    width: clamp(120px, 28vw, 180px);
+    height: clamp(120px, 28vw, 180px);
+    flex-shrink: 0;
+    border: 2px solid var(--neon-cyan);
+    padding: 6px;
+    position: relative;
+    background: rgba(0, 240, 255, 0.05);
+}
+
+.hero-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: contrast(120%);
+}
+
+.hero-copy {
+    flex: 1 1 280px;
+    min-width: 0;
+}
+
+.hero-title {
+    font-size: clamp(1.6rem, 6vw, 3rem);
+    margin-bottom: 1rem;
+    line-height: 1.15;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.hero-tagline {
+    font-size: clamp(0.95rem, 2.5vw, 1.2rem);
+    margin-bottom: 2rem;
+    max-width: 600px;
+    opacity: 0.9;
+}
+
+.hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem 1rem;
+}
+
+.hero-stats {
+    display: flex;
+    gap: 1rem;
+    margin-top: clamp(1.5rem, 4vw, 3rem);
+    flex-wrap: wrap;
+}
+
+.hero-stat {
+    border: 1px solid rgba(0, 240, 255, 0.3);
+    padding: 1rem;
+    min-width: min(150px, 100%);
+    flex: 1 1 140px;
+    background: rgba(0, 0, 0, 0.4);
+    border-top: 3px solid var(--neon-cyan);
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+    gap: clamp(1.5rem, 4vw, 3rem);
+}
+
+.about-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr));
+    gap: 1.5rem;
+    margin-top: clamp(2rem, 5vw, 4rem);
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+    gap: 2rem;
+}
+
+.certs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+    gap: 1.5rem;
+    margin-bottom: 4rem;
+}
+
+.job-header {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.job-header img {
+    width: clamp(64px, 15vw, 100px);
+    height: clamp(64px, 15vw, 100px);
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.job-meta {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.edu-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.edu-logo {
+    width: clamp(64px, 15vw, 100px);
+    height: clamp(64px, 15vw, 100px);
+    flex-shrink: 0;
+}
+
+.edu-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.focus-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 180px), 1fr));
+    gap: 1rem;
+}
+
+.contact-links {
+    display: flex;
+    justify-content: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    margin-bottom: 3rem;
+}
+
+.timeline {
+    position: relative;
+    padding-left: clamp(28px, 6vw, 40px);
+}
+
+.timeline-line {
+    position: absolute;
+    left: 11px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: repeating-linear-gradient(
+        to bottom,
+        var(--neon-cyan) 0,
+        var(--neon-cyan) 10px,
+        transparent 10px,
+        transparent 20px
+    );
+}
+
+.timeline-marker {
+    position: absolute;
+    left: calc(-1 * clamp(28px, 6vw, 40px));
+    top: 10px;
+    width: 24px;
+    height: 24px;
+    background: var(--bg-dark);
+    border: 2px solid var(--neon-cyan);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    color: var(--neon-cyan);
 }
 
 
@@ -317,32 +582,175 @@ section {
     background: var(--neon-cyan);
 }
 
+/* —— Responsive breakpoints —— */
+
+@media (max-width: 1024px) {
+    .nav-links {
+        gap: 1rem;
+        font-size: 0.9rem;
+    }
+}
+
 @media (max-width: 768px) {
-    section {
-        padding: 120px 0;
-    }
-    h2 {
-        font-size: 2rem;
-    }
-    .cyber-panel {
-        padding: 2rem;
-    }
     .mobile-menu-btn {
-        display: block !important;
+        display: block;
     }
+
     .nav-links {
         position: absolute;
         top: 70px;
         left: 0;
         right: 0;
-        background: var(--bg-panel);
-        backdrop-filter: blur(20px);
+        background: rgba(5, 5, 5, 0.88);
+        backdrop-filter: blur(40px) saturate(1.2);
+        -webkit-backdrop-filter: blur(40px) saturate(1.2);
         flex-direction: column;
-        padding: 2rem;
+        align-items: stretch;
+        padding: 1.25rem 1.5rem 1.75rem;
         border-bottom: 1px solid var(--neon-cyan);
+        gap: 0;
+        display: none;
+        max-height: calc(100dvh - 70px);
+        overflow-y: auto;
+        box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55);
+    }
+
+    [data-theme='girly'] .nav-links {
+        background: rgba(255, 255, 255, 0.92);
+    }
+
+    .nav-links.open {
+        display: flex;
+    }
+
+    .nav-links a,
+    .nav-links .cyber-btn,
+    .nav-links button {
+        padding: 0.85rem 0.5rem;
+        border-bottom: 1px solid rgba(0, 229, 255, 0.12);
+        width: 100%;
+        text-align: left;
+        justify-content: flex-start;
+    }
+
+    .nav-links .cyber-btn {
+        margin-top: 0.5rem;
+        text-align: center;
+        justify-content: center;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .nav-links button {
+        border-bottom: none;
+    }
+
+    .hero-layout {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .hero-copy {
+        flex: 1 1 auto;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .hero-tagline {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .hero-actions {
+        justify-content: center;
+        width: 100%;
+    }
+
+    .hero-actions .cyber-btn {
+        flex: 1 1 auto;
+        min-width: min(100%, 160px);
+    }
+
+    .hero-stats {
+        justify-content: center;
+        width: 100%;
+    }
+
+    .glitch::before,
+    .glitch::after {
+        /* Reduce glitch layer cost / overflow on small screens */
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .cyber-btn {
+        white-space: normal;
+        padding: 10px 14px;
+        line-height: 1.3;
+    }
+
+    .hero-actions {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .hero-actions .cyber-btn {
+        width: 100%;
+    }
+
+    .hero-stat {
+        min-width: 100%;
+    }
+
+    .job-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .edu-header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .contact-links .cyber-btn {
+        flex: 1 1 calc(50% - 0.75rem);
+        min-width: 0;
+        white-space: normal;
+        font-size: 0.7rem;
+        padding: 10px 12px;
+    }
+
+    .timeline-line {
+        left: 7px;
+    }
+
+    .timeline-marker {
+        width: 20px;
+        height: 20px;
+        font-size: 0.7rem;
+        left: calc(-1 * clamp(28px, 6vw, 40px) + 2px);
+    }
+}
+
+@media (min-width: 769px) {
+    .nav-links {
+        display: flex !important;
+    }
+
+    .mobile-menu-btn {
         display: none !important;
     }
-    .nav-links.open {
-        display: flex !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .glitch::before,
+    .glitch::after {
+        animation: none;
     }
 }

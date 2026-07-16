@@ -24,21 +24,24 @@ export default function Education() {
             className="cyber-panel"
             style={{ maxWidth: '600px', background: 'var(--bg-panel)', border: '1px solid var(--panel-border)' }}
           >
-            <div style={{ display: 'flex', alignItems: 'flex-start', gap: '2rem' }}>
+            <div className="edu-header">
               {EDUCATION.logo && (
-                <div style={{ width: '100px', height: '100px', flexShrink: 0 }}>
+                <div className="edu-logo">
                   <img 
                     src={EDUCATION.logo} 
                     alt={EDUCATION.school}
-                    style={{ width: '100%', height: '100%', objectFit: 'contain' }}
+                    loading="lazy"
+                    decoding="async"
+                    width={100}
+                    height={100}
                   />
                 </div>
               )}
-              <div style={{ flex: 1 }}>
-                <h3 style={{ color: 'var(--neon-cyan)', fontSize: '1.5rem', marginBottom: '0.5rem' }}>
+              <div style={{ flex: 1, minWidth: 0 }}>
+                <h3 style={{ color: 'var(--neon-cyan)', fontSize: 'clamp(1.15rem, 3vw, 1.5rem)', marginBottom: '0.5rem' }}>
                   {EDUCATION.degree}
                 </h3>
-                <div style={{ color: 'var(--neon-magenta)', fontSize: '1.1rem', marginBottom: '1rem', fontWeight: 'bold' }}>
+                <div style={{ color: 'var(--neon-magenta)', fontSize: 'clamp(0.95rem, 2.5vw, 1.1rem)', marginBottom: '1rem', fontWeight: 'bold' }}>
                   {EDUCATION.school}
                 </div>
                 <div style={{ color: 'var(--text-dim)', fontSize: '1rem' }}>
@@ -48,9 +51,9 @@ export default function Education() {
             </div>
           </motion.div>
 
-          <div style={{ marginTop: '3rem', padding: '2rem', background: 'rgba(0, 229, 255, 0.05)', border: '1px dashed var(--panel-border)', borderRadius: '0' }}>
+          <div style={{ marginTop: '3rem', padding: 'clamp(1rem, 3vw, 2rem)', background: 'rgba(0, 229, 255, 0.05)', border: '1px dashed var(--panel-border)', borderRadius: '0' }}>
             <h4 style={{ color: 'var(--neon-cyan)', marginBottom: '1rem' }}>Focus Areas</h4>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1rem' }}>
+            <div className="focus-grid">
               <div>
                 <div style={{ color: 'var(--neon-green)', fontWeight: 'bold', marginBottom: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                   <Code size={18} /> Core
