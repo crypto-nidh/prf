@@ -1,10 +1,12 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { ChevronLeft, ChevronRight, Trophy } from 'lucide-react';
 import { CERTIFICATIONS, ACHIEVEMENTS } from '../data';
 
 export default function Certifications() {
   const [activeIndex, setActiveIndex] = useState(0);
+  const trackRef = useRef(null);
+  const marqueeRef = useRef(null);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -25,6 +27,22 @@ export default function Certifications() {
     });
   };
 
+  useEffect(() => {
+    const cards = trackRef.current?.children;
+    const marquee = marqueeRef.current;
+    if (!cards || cards.length === 0 || !marquee) return;
+
+    const currentCard = cards[0];
+    const cardBounds = currentCard.getBoundingClientRect();
+    const marqueeBounds = marquee.getBoundingClientRect();
+    const targetLeft = marquee.scrollLeft + cardBounds.left - marqueeBounds.left - (marquee.clientWidth - currentCard.clientWidth) / 2;
+
+    marquee.scrollTo({
+      left: Math.max(0, targetLeft),
+      behavior: 'smooth',
+    });
+  }, [activeIndex]);
+
   return (
     <section id="certifications">
       <div className="container">
@@ -35,57 +53,49 @@ export default function Certifications() {
           transition={{ duration: 0.6 }}
         >
           <div style={{ marginBottom: '3rem' }}>
-            <span style={{ display: 'inline-block', padding: '4px 8px', background: 'var(--neon-green)', color: '#000', fontSize: '0.8rem', marginBottom: '1rem' }}>
-              ACHIEVEMENTS UNLOCKED
-            </span>
             <h2>Certifications</h2>
           </div>
 
           <div className="certs-shell">
-            <div className="certs-nav">
-              <button type="button" aria-label="Previous certificate" onClick={() => moveCerts(-1)}>
-                <ChevronLeft size={18} />
+            <div className="certs-slider">
+              <button type="button" className="certs-arrow certs-arrow--left" aria-label="Previous certificate" onClick={() => moveCerts(-1)}>
+                <ChevronLeft size={22} />
               </button>
-              <button type="button" aria-label="Next certificate" onClick={() => moveCerts(1)}>
-                <ChevronRight size={18} />
-              </button>
-            </div>
 
-            <div className="certs-marquee">
-              <div className="certs-track">
-                {visibleCerts.map((cert, i) => (
-                  <motion.div
-                    key={`${cert.name}-${i}`}
-                    whileHover={{ scale: 1.02 }}
-                    className={`cert-card ${cert.highlight ? 'cert-card--highlight' : ''} ${cert.status === 'progress' ? 'is-progress' : ''}`}
-                  >
-                    {cert.highlight && <span className="cert-badge">Featured</span>}
-                    {cert.image && (
-                      <img
-                        src={cert.image}
-                        alt={cert.name}
-                        loading="lazy"
-                        decoding="async"
-                        width={400}
-                        height={180}
-                        className={cert.highlight ? 'cert-image cert-image--icon' : 'cert-image'}
-                        style={{
-                          width: '100%',
-                          height: '180px',
-                          objectFit: 'contain',
-                          marginBottom: '1rem',
-                          background: 'rgba(0,0,0,0.2)'
-                        }}
-                      />
-                    )}
-                    <div className="cert-status" style={{ color: cert.status === 'done' ? 'var(--neon-green)' : 'var(--neon-cyan)' }}>
-                      {cert.status === 'done' ? '✓ DONE' : '◐ IN PROGRESS'}
-                    </div>
-                    <h4>{cert.name}</h4>
-                    <div className="cert-issuer">{cert.issuer}</div>
-                  </motion.div>
-                ))}
+              <div ref={marqueeRef} className="certs-marquee">
+                <div ref={trackRef} className="certs-track">
+                  {visibleCerts.map((cert, i) => (
+                    <motion.div
+                      key={`${cert.name}-${i}`}
+                      whileHover={{ scale: 1.02 }}
+                      className={`cert-card ${cert.highlight ? 'cert-card--highlight' : ''}`}
+                    >
+                      {cert.image && (
+                        <img
+                          src={cert.image}
+                          alt={cert.name}
+                          loading="lazy"
+                          decoding="async"
+                          width={480}
+                          height={260}
+                          className="cert-image"
+                          style={{
+                            width: '100%',
+                            height: '370px',
+                            objectFit: 'contain',
+                            marginBottom: 0,
+                            background: 'transparent'
+                          }}
+                        />
+                      )}
+                    </motion.div>
+                  ))}
+                </div>
               </div>
+
+              <button type="button" className="certs-arrow certs-arrow--right" aria-label="Next certificate" onClick={() => moveCerts(1)}>
+                <ChevronRight size={22} />
+              </button>
             </div>
           </div>
 

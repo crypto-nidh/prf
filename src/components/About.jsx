@@ -12,9 +12,6 @@ export default function About() {
           transition={{ duration: 0.6 }}
         >
           <div style={{ marginBottom: '2rem' }}>
-            <span style={{ display: 'inline-block', padding: '4px 8px', background: 'var(--neon-magenta)', color: '#fff', fontSize: '0.8rem', marginBottom: '1rem' }}>
-              CHARACTER INFO
-            </span>
             <h2>About Me</h2>
           </div>
 

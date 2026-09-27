@@ -12,9 +12,6 @@ export default function Experience() {
           transition={{ duration: 0.6 }}
         >
           <div style={{ marginBottom: '3rem' }}>
-            <span style={{ display: 'inline-block', padding: '4px 8px', background: 'var(--neon-cyan)', color: '#000', fontSize: '0.8rem', marginBottom: '1rem' }}>
-              QUEST LOG
-            </span>
             <h2>Experience</h2>
           </div>
 

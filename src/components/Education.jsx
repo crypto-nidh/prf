@@ -14,7 +14,7 @@ export default function Education() {
         >
           <div style={{ marginBottom: '3rem' }}>
             <span style={{ display: 'inline-block', padding: '4px 8px', background: 'var(--neon-green)', color: '#000', fontSize: '0.8rem', marginBottom: '1rem' }}>
-              ACADEMIC FOUNDATION
+              
             </span>
             <h2>Education</h2>
           </div>
