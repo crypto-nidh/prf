@@ -595,8 +595,8 @@ section {
 }
 
 .job-header img {
-    width: clamp(90px, 18vw, 130px);
-    height: clamp(90px, 18vw, 130px);
+    width: clamp(120px, 22vw, 170px);
+    height: clamp(120px, 22vw, 170px);
     object-fit: contain;
     flex-shrink: 0;
 }
