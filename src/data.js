@@ -125,17 +125,17 @@ export const PROJECTS = [{
 ];
 
 export const CERTIFICATIONS = [
-    { status: "done", name: "CBTP", issuer: "Certified Blue Team Practitioner — SecOps Group", image: "/images/certs/cbtp.webp" },
-    { status: "done", name: "CNSP", issuer: "SecOps Group", image: "/images/certs/cnsp.webp" },
-    { status: "done", name: "C3SA", issuer: "CyberWarFare Labs", image: "/images/certs/c3sa.webp" },
-    { status: "done", name: "CTI 101", issuer: "ARCX", image: "/images/certs/cti101.webp" },
-    { status: "done", name: "Certified Ethical Hacker (CEH)", issuer: "EC-Council", image: "/images/certs/ceh.png", highlight: true },
-    { status: "progress", name: "CPENT", issuer: "Certified Penetration Testing Professional", image: null },
+    { name: "CBTP", issuer: "Certified Blue Team Practitioner — SecOps Group", image: "/images/certs/cbtp.webp" },
+    { name: "CNSP", issuer: "SecOps Group", image: "/images/certs/cnsp.webp" },
+    { name: "Certified Ethical Hacker (CEH)", issuer: "EC-Council", image: "/images/certs/ceh.png", highlight: true },
+    { name: "C3SA", issuer: "CyberWarFare Labs", image: "/images/certs/c3sa.webp" },
+    { name: "CTI 101", issuer: "ARCX", image: "/images/certs/cti101.webp" },
+
 ];
 
 export const ACHIEVEMENTS = [
     { rank: "TOP 1 🌍", title: "HACKTHEBOX", detail: "Top 1 in India, Worldwide in 10" },
-    { title: "11 cve under my name " },
+    { title: "CVE DISCOVERIES", detail: "11 CVEs under my name" },
     { rank: "#5", title: "OWASP HACKER'S GAMBIT 2025", detail: "National ranking, Team GenZCTF" },
     { rank: "#2", title: "VECTORCTF", detail: "TryHackMe" },
     { rank: "#27", title: "CYBERNEONGEN CTF", detail: "Solo entry" },

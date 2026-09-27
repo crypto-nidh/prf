@@ -512,19 +512,30 @@ section {
 }
 
 .cert-card--highlight {
-    border-color: rgba(255, 196, 0, 0.9);
-    box-shadow: 0 0 0 1px rgba(255, 196, 0, 0.3), 0 0 22px rgba(255, 196, 0, 0.18);
+    border-color: rgba(255, 196, 0, 1);
+    box-shadow: 0 0 0 1px rgba(255, 196, 0, 0.6), 0 0 26px rgba(255, 196, 0, 0.35), 0 0 60px rgba(0, 240, 255, 0.12);
+    background: linear-gradient(180deg, rgba(17, 24, 39, 0.96), rgba(12, 18, 28, 0.95));
+    transform: translateY(-2px);
+}
+
+.cert-card--highlight .cert-status {
+    color: #ffd76a !important;
+}
+
+.cert-card--highlight .cert-issuer {
+    color: #d4d9df;
 }
 
 .cert-badge {
     position: absolute;
     top: 0.9rem;
     right: 0.9rem;
-    background: rgba(255, 196, 0, 0.18);
-    color: #ffd76a;
-    border: 1px solid rgba(255, 196, 0, 0.5);
+    background: linear-gradient(135deg, rgba(255, 196, 0, 0.28), rgba(255, 140, 0, 0.25));
+    color: #ffe083;
+    border: 1px solid rgba(255, 196, 0, 0.8);
+    box-shadow: 0 0 14px rgba(255, 196, 0, 0.25);
     font-size: 0.68rem;
-    padding: 0.25rem 0.5rem;
+    padding: 0.3rem 0.55rem;
     letter-spacing: 0.08em;
     text-transform: uppercase;
 }
