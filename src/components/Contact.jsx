@@ -1,8 +1,21 @@
+import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Code, BookOpen, Share2, Link } from 'lucide-react';
+import { Mail, Code, BookOpen, Share2, Link, Copy, Check } from 'lucide-react';
 import { SITE } from '../data';
 
 export default function Contact() {
+  const [copied, setCopied] = useState(false);
+
+  const handleCopyDiscord = async () => {
+    try {
+      await navigator.clipboard.writeText(SITE.discord.trim());
+      setCopied(true);
+      setTimeout(() => setCopied(false), 1500);
+    } catch (error) {
+      console.error('Copy failed:', error);
+    }
+  };
+
   return (
     <section id="contact" style={{ paddingBottom: 'clamp(80px, 12vw, 150px)' }}>
       <div className="container">
@@ -30,9 +43,16 @@ export default function Contact() {
             <a href={SITE.github} target="_blank" rel="noopener noreferrer" className="cyber-btn" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}><Code size={18} /> GITHUB</a>
             <a href={SITE.medium} target="_blank" rel="noopener noreferrer" className="cyber-btn" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}><BookOpen size={18} /> MEDIUM</a>
             <a href={SITE.twitter} target="_blank" rel="noopener noreferrer" className="cyber-btn" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}><Share2 size={18} /> TWITTER</a>
-            <div className="cyber-btn" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', cursor: 'default', opacity: 0.8 }}>
-              <span style={{ fontWeight: 'bold' }}>D</span> {SITE.discord}
-            </div>
+            <button
+              type="button"
+              className="cyber-btn"
+              onClick={handleCopyDiscord}
+              style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', cursor: 'pointer' }}
+            >
+              <span style={{ fontWeight: 'bold' }}>D</span>
+              {SITE.discord.trim()}
+              {copied ? <Check size={16} /> : <Copy size={16} />}
+            </button>
           </div>
 
         </motion.div>

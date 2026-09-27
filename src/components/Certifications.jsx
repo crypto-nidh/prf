@@ -1,8 +1,30 @@
+import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { Trophy } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Trophy } from 'lucide-react';
 import { CERTIFICATIONS, ACHIEVEMENTS } from '../data';
 
 export default function Certifications() {
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % CERTIFICATIONS.length);
+    }, 3500);
+
+    return () => clearInterval(timer);
+  }, []);
+
+  const visibleCerts = Array.from({ length: Math.min(4, CERTIFICATIONS.length) }, (_, i) => {
+    return CERTIFICATIONS[(activeIndex + i) % CERTIFICATIONS.length];
+  });
+
+  const moveCerts = (direction) => {
+    setActiveIndex((prev) => {
+      const next = (prev + direction + CERTIFICATIONS.length) % CERTIFICATIONS.length;
+      return next;
+    });
+  };
+
   return (
     <section id="certifications">
       <div className="container">
@@ -19,57 +41,56 @@ export default function Certifications() {
             <h2>Certifications</h2>
           </div>
 
-          <div className="certs-marquee">
-            <div className="certs-track">
-              {[CERTIFICATIONS, CERTIFICATIONS].map((certifications, groupIndex) => (
-                <div className="certs-group" key={groupIndex}>
-                  {certifications.map((cert, i) => (
-                    <motion.div
-                      key={`${groupIndex}-${i}`}
-                      whileHover={{ scale: 1.02 }}
-                      style={{
-                        border: '1px solid var(--panel-border)',
-                        padding: '1.5rem',
-                        background: 'var(--bg-panel)',
-                        backdropFilter: 'blur(12px)',
-                        WebkitBackdropFilter: 'blur(12px)',
-                        opacity: cert.status === 'progress' ? 0.6 : 1,
-                        display: 'flex',
-                        flexDirection: 'column'
-                      }}
-                    >
-                      {cert.image && (
-                        <img
-                          src={cert.image}
-                          alt={cert.name}
-                          loading="lazy"
-                          decoding="async"
-                          width={400}
-                          height={180}
-                          style={{
-                            width: '100%',
-                            height: '180px',
-                            objectFit: 'contain',
-                            marginBottom: '1rem',
-                            background: 'rgba(0,0,0,0.2)'
-                          }}
-                        />
-                      )}
-                      <div style={{ color: cert.status === 'done' ? 'var(--neon-green)' : 'var(--neon-cyan)', fontSize: '0.75rem', marginBottom: '1rem' }}>
-                        {cert.status === 'done' ? '✓ DONE' : '◐ IN PROGRESS'}
-                      </div>
-                      <h4 style={{ color: 'var(--text-main)', marginBottom: '0.5rem' }}>{cert.name}</h4>
-                      <div style={{ fontSize: '0.8rem', color: 'var(--text-dim)' }}>{cert.issuer}</div>
-                    </motion.div>
-                  ))}
-                </div>
-              ))}
+          <div className="certs-shell">
+            <div className="certs-nav">
+              <button type="button" aria-label="Previous certificate" onClick={() => moveCerts(-1)}>
+                <ChevronLeft size={18} />
+              </button>
+              <button type="button" aria-label="Next certificate" onClick={() => moveCerts(1)}>
+                <ChevronRight size={18} />
+              </button>
+            </div>
+
+            <div className="certs-marquee">
+              <div className="certs-track">
+                {visibleCerts.map((cert, i) => (
+                  <motion.div
+                    key={`${cert.name}-${i}`}
+                    whileHover={{ scale: 1.02 }}
+                    className={`cert-card ${cert.highlight ? 'cert-card--highlight' : ''} ${cert.status === 'progress' ? 'is-progress' : ''}`}
+                  >
+                    {cert.highlight && <span className="cert-badge">Featured</span>}
+                    {cert.image && (
+                      <img
+                        src={cert.image}
+                        alt={cert.name}
+                        loading="lazy"
+                        decoding="async"
+                        width={400}
+                        height={180}
+                        style={{
+                          width: '100%',
+                          height: '180px',
+                          objectFit: 'contain',
+                          marginBottom: '1rem',
+                          background: 'rgba(0,0,0,0.2)'
+                        }}
+                      />
+                    )}
+                    <div className="cert-status" style={{ color: cert.status === 'done' ? 'var(--neon-green)' : 'var(--neon-cyan)' }}>
+                      {cert.status === 'done' ? '✓ DONE' : '◐ IN PROGRESS'}
+                    </div>
+                    <h4>{cert.name}</h4>
+                    <div className="cert-issuer">{cert.issuer}</div>
+                  </motion.div>
+                ))}
+              </div>
             </div>
           </div>
 
           <div style={{ marginTop: '3rem' }}>
             <h3 className="text-magenta mb-2" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-              <Trophy size={24} /> CTF LEADERBOARD
+              <Trophy size={24} /> Achievements
             </h3>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
               {ACHIEVEMENTS.map((a, i) => (

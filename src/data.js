@@ -30,16 +30,17 @@ export const SITE = {
 };
 
 export const STATS = [
-    { icon: "trophy", value: "TOP 3", label: "CTF Results" },
-    { icon: "award", value: "4+", label: "Certifications" },
-    { icon: "shield", value: "OWASP", label: "Vuln Classes" },
+    { icon: "trophy", value: "CTF Results" },
+    { icon: "award", value: "Certifications+" },
+    { icon: "shield", value: "CVEs" },
 ];
 
 export const ABOUT = {
     paragraphs: [
-        "I'm <b>Nidhi Kathayat</b>, a Computer Science undergrad at Poornima University and a cybersecurity practitioner focused on Web Application Security and VAPT.",
-        "My experience comes from CTFs and applied labs — hunting <b>SQL Injection, XSS, IDOR and CSRF</b> through recon and manual testing in Burp Suite, then documenting every finding as a clear, structured PoC report.",
-        "I approach every target with an attacker's mindset: understand how a system is meant to work, then find where that assumption breaks.",
+        "I'm a Security Researcher into Web Application Security and VAPT, now exploring the SOC and defensive side of cybersecurity.",
+        "I started out breaking things to understand how they work, finding vulnerabilities, testing attack paths, and building security projects along the way.",
+        "Now I'm learning to look at the same problems from the defender's side: investigating alerts, understanding threats, and figuring out how to stop them.",
+        "Basically, I like being on both sides of the attack."
     ],
     tools: ["BURP SUITE", "NMAP", "METASPLOIT", "PYTHON", "BLOODHOUND", "ZAP"],
     skill_columns: [
@@ -47,19 +48,14 @@ export const ABOUT = {
         { title: "VAPT", skills: ["ENUMERATION", "EXPLOITATION", "PoC REPORTS", "ACTIVE DIR."] },
         { title: "SCRIPTING & PLATFORMS", skills: ["PYTHON", "BASH", "SQL", "KALI", "DOCKER", "GIT"] },
     ],
-    cards: [
-        { idx: "01", title: "RECON", text: "Mapping the attack surface before a single payload is sent." },
-        { idx: "02", title: "EXPLOIT", text: "Turning logic flaws into working, repeatable proof." },
-        { idx: "03", title: "REPORT", text: "Structured PoCs a developer can act on same-day." },
-        { idx: "04", title: "HARDEN", text: "Mitigations that hold up under retest." },
-    ],
+
 };
 
 export const EXPERIENCE = [{
     title: "Cybersecurity Analyst Intern",
     company: "GRADIENT CYBER",
     date: "JUL 2026 — PRESENT",
-    logo: null,
+    logo: "/images/gc.webp",
     bullets: [
         "Monitored and triaged security alerts across client environments using SIEM tools",
         "Investigated potential threats and escalated confirmed incidents with documented findings",
@@ -133,12 +129,13 @@ export const CERTIFICATIONS = [
     { status: "done", name: "CNSP", issuer: "SecOps Group", image: "/images/certs/cnsp.webp" },
     { status: "done", name: "C3SA", issuer: "CyberWarFare Labs", image: "/images/certs/c3sa.webp" },
     { status: "done", name: "CTI 101", issuer: "ARCX", image: "/images/certs/cti101.webp" },
-    { status: "done", name: "Certified Ethical Hacker (CEH)", issuer: "EC-Council", image: "/images/certs/TODO-ceh.webp" },
+    { status: "done", name: "Certified Ethical Hacker (CEH)", issuer: "EC-Council", image: "/images/certs/ceh.png", highlight: true },
     { status: "progress", name: "CPENT", issuer: "Certified Penetration Testing Professional", image: null },
 ];
 
 export const ACHIEVEMENTS = [
-    { rank: "TOP 3 🌍", title: "HACKTHEBOX", detail: "Top 3 in India, Worldwide in 100" },
+    { rank: "TOP 1 🌍", title: "HACKTHEBOX", detail: "Top 1 in India, Worldwide in 10" },
+    { title: "11 cve under my name " },
     { rank: "#5", title: "OWASP HACKER'S GAMBIT 2025", detail: "National ranking, Team GenZCTF" },
     { rank: "#2", title: "VECTORCTF", detail: "TryHackMe" },
     { rank: "#27", title: "CYBERNEONGEN CTF", detail: "Solo entry" },

@@ -450,41 +450,98 @@ section {
     gap: 2rem;
 }
 
+.certs-shell {
+    margin-bottom: 4rem;
+}
+
+.certs-nav {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.certs-nav button {
+    width: 2.5rem;
+    height: 2.5rem;
+    border: 1px solid rgba(0, 240, 255, 0.5);
+    background: rgba(10, 15, 30, 0.8);
+    color: var(--text-main);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.certs-nav button:hover {
+    transform: translateY(-1px);
+    border-color: var(--neon-cyan);
+    box-shadow: 0 0 18px rgba(0, 240, 255, 0.25);
+}
+
 .certs-marquee {
     overflow: hidden;
     position: relative;
-    margin-bottom: 4rem;
     mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
     -webkit-mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
 }
 
 .certs-track {
     display: flex;
-    width: max-content;
-    animation: certs-marquee-right 35s linear infinite;
-}
-
-.certs-marquee:hover .certs-track {
-    animation-play-state: paused;
-}
-
-.certs-group {
-    display: flex;
     gap: 1.5rem;
-    padding-right: 1.5rem;
+    will-change: transform;
 }
 
-.certs-group>* {
-    flex: 0 0 min(320px, calc(100vw - 2rem));
+.cert-card {
+    flex: 0 0 min(280px, calc(100vw - 3rem));
+    border: 1px solid var(--panel-border);
+    padding: 1.5rem;
+    background: var(--bg-panel);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    display: flex;
+    flex-direction: column;
+    min-height: 320px;
+    position: relative;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
 }
 
-@keyframes certs-marquee-right {
-    from {
-        transform: translateX(-50%);
-    }
-    to {
-        transform: translateX(0);
-    }
+.cert-card.is-progress {
+    opacity: 0.7;
+}
+
+.cert-card--highlight {
+    border-color: rgba(255, 196, 0, 0.9);
+    box-shadow: 0 0 0 1px rgba(255, 196, 0, 0.3), 0 0 22px rgba(255, 196, 0, 0.18);
+}
+
+.cert-badge {
+    position: absolute;
+    top: 0.9rem;
+    right: 0.9rem;
+    background: rgba(255, 196, 0, 0.18);
+    color: #ffd76a;
+    border: 1px solid rgba(255, 196, 0, 0.5);
+    font-size: 0.68rem;
+    padding: 0.25rem 0.5rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.cert-status {
+    font-size: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.cert-card h4 {
+    color: var(--text-main);
+    margin-bottom: 0.5rem;
+}
+
+.cert-issuer {
+    font-size: 0.8rem;
+    color: var(--text-dim);
 }
 
 @media (prefers-reduced-motion: reduce) {
