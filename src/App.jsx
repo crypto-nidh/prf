@@ -92,12 +92,12 @@ function App() {
             aria-label={`${SITE.name} — home`}
           >
             <img
-              src="/favicon.svg"
+              src="/images/profile.webp"
               alt=""
               width={30}
               height={30}
               aria-hidden="true"
-              style={{ width: '30px', height: '30px', display: 'block' }}
+              style={{ width: '30px', height: '30px', display: 'block', objectFit: 'cover', borderRadius: '50%' }}
             />
             HAZEL
           </a>
