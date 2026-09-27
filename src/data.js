@@ -3,8 +3,7 @@ export const SITE = {
     role: "Web Application Security & VAPT",
     url: "https://nidhikathayat.netlify.app",
     title: "Nidhi Kathayat | Web Application Security & VAPT",
-    description:
-        "Portfolio of Nidhi Kathayat — Computer Science undergrad and cybersecurity practitioner focused on Web Application Security, VAPT, CTFs, and vulnerability research.",
+    description: "Portfolio of Nidhi Kathayat — Computer Science undergrad and cybersecurity practitioner focused on Web Application Security, VAPT, CTFs, and vulnerability research.",
     keywords: [
         "Nidhi Kathayat",
         "Web Application Security",
@@ -57,8 +56,16 @@ export const ABOUT = {
 };
 
 export const EXPERIENCE = [{
-
-
+    title: "Cybersecurity Analyst Intern",
+    company: "GRADIENT CYBER",
+    date: "JUL 2026 — PRESENT",
+    logo: null,
+    bullets: [
+        "Monitored and triaged security alerts across client environments using SIEM tools",
+        "Investigated potential threats and escalated confirmed incidents with documented findings",
+        "Assisted in vulnerability assessment and reporting for managed detection and response operations",
+    ],
+}, {
     title: "CTF Developer Intern (Web Security)",
     company: "RAZZIFY",
     date: "SEP 2025 — DEC 2025",
@@ -126,7 +133,7 @@ export const CERTIFICATIONS = [
     { status: "done", name: "CNSP", issuer: "SecOps Group", image: "/images/certs/cnsp.webp" },
     { status: "done", name: "C3SA", issuer: "CyberWarFare Labs", image: "/images/certs/c3sa.webp" },
     { status: "done", name: "CTI 101", issuer: "ARCX", image: "/images/certs/cti101.webp" },
-    { status: "progress", name: "CEH", issuer: "Certified Ethical Hacker", image: null },
+    { status: "done", name: "Certified Ethical Hacker (CEH)", issuer: "EC-Council", image: "/images/certs/TODO-ceh.webp" },
     { status: "progress", name: "CPENT", issuer: "Certified Penetration Testing Professional", image: null },
 ];
 

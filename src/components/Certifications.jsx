@@ -19,46 +19,52 @@ export default function Certifications() {
             <h2>Certifications</h2>
           </div>
 
-          <div className="certs-grid">
-            {CERTIFICATIONS.map((cert, i) => (
-              <motion.div 
-                key={i}
-                whileHover={{ scale: 1.02 }}
-                style={{ 
-                  border: '1px solid var(--panel-border)', 
-                  padding: '1.5rem',
-                  background: 'var(--bg-panel)',
-                  backdropFilter: 'blur(12px)',
-                  WebkitBackdropFilter: 'blur(12px)',
-                  opacity: cert.status === 'progress' ? 0.6 : 1,
-                  display: 'flex',
-                  flexDirection: 'column'
-                }}
-              >
-                {cert.image && (
-                  <img 
-                    src={cert.image} 
-                    alt={cert.name}
-                    loading="lazy"
-                    decoding="async"
-                    width={400}
-                    height={180}
-                    style={{ 
-                      width: '100%', 
-                      height: '180px', 
-                      objectFit: 'contain',
-                      marginBottom: '1rem',
-                      background: 'rgba(0,0,0,0.2)'
-                    }}
-                  />
-                )}
-                <div style={{ color: cert.status === 'done' ? 'var(--neon-green)' : 'var(--neon-cyan)', fontSize: '0.75rem', marginBottom: '1rem' }}>
-                  {cert.status === 'done' ? '✓ DONE' : '◐ IN PROGRESS'}
+          <div className="certs-marquee">
+            <div className="certs-track">
+              {[CERTIFICATIONS, CERTIFICATIONS].map((certifications, groupIndex) => (
+                <div className="certs-group" key={groupIndex}>
+                  {certifications.map((cert, i) => (
+                    <motion.div
+                      key={`${groupIndex}-${i}`}
+                      whileHover={{ scale: 1.02 }}
+                      style={{
+                        border: '1px solid var(--panel-border)',
+                        padding: '1.5rem',
+                        background: 'var(--bg-panel)',
+                        backdropFilter: 'blur(12px)',
+                        WebkitBackdropFilter: 'blur(12px)',
+                        opacity: cert.status === 'progress' ? 0.6 : 1,
+                        display: 'flex',
+                        flexDirection: 'column'
+                      }}
+                    >
+                      {cert.image && (
+                        <img
+                          src={cert.image}
+                          alt={cert.name}
+                          loading="lazy"
+                          decoding="async"
+                          width={400}
+                          height={180}
+                          style={{
+                            width: '100%',
+                            height: '180px',
+                            objectFit: 'contain',
+                            marginBottom: '1rem',
+                            background: 'rgba(0,0,0,0.2)'
+                          }}
+                        />
+                      )}
+                      <div style={{ color: cert.status === 'done' ? 'var(--neon-green)' : 'var(--neon-cyan)', fontSize: '0.75rem', marginBottom: '1rem' }}>
+                        {cert.status === 'done' ? '✓ DONE' : '◐ IN PROGRESS'}
+                      </div>
+                      <h4 style={{ color: 'var(--text-main)', marginBottom: '0.5rem' }}>{cert.name}</h4>
+                      <div style={{ fontSize: '0.8rem', color: 'var(--text-dim)' }}>{cert.issuer}</div>
+                    </motion.div>
+                  ))}
                 </div>
-                <h4 style={{ color: 'var(--text-main)', marginBottom: '0.5rem' }}>{cert.name}</h4>
-                <div style={{ fontSize: '0.8rem', color: 'var(--text-dim)' }}>{cert.issuer}</div>
-              </motion.div>
-            ))}
+              ))}
+            </div>
           </div>
 
           <div style={{ marginTop: '3rem' }}>
