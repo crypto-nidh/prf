@@ -30,7 +30,7 @@ export const SITE = {
 };
 
 export const STATS = [
-    { icon: "trophy", value: "CTF Results" },
+    { icon: "trophy", value: "Achievements" },
     { icon: "award", value: "Certifications+" },
     { icon: "shield", value: "CVEs" },
 ];
@@ -48,7 +48,6 @@ export const ABOUT = {
         { title: "VAPT", skills: ["ENUMERATION", "EXPLOITATION", "PoC REPORTS", "ACTIVE DIR."] },
         { title: "SCRIPTING & PLATFORMS", skills: ["PYTHON", "BASH", "SQL", "KALI", "DOCKER", "GIT"] },
     ],
-
 };
 
 export const EXPERIENCE = [{
@@ -125,12 +124,11 @@ export const PROJECTS = [{
 ];
 
 export const CERTIFICATIONS = [
-    { name: "CBTP", issuer: "Certified Blue Team Practitioner — SecOps Group", image: "/images/certs/cbtp.webp" },
-    { name: "CNSP", issuer: "SecOps Group", image: "/images/certs/cnsp.webp" },
-    { name: "Certified Ethical Hacker (CEH)", issuer: "EC-Council", image: "/images/certs/ceh.png", highlight: true },
-    { name: "C3SA", issuer: "CyberWarFare Labs", image: "/images/certs/c3sa.webp" },
-    { name: "CTI 101", issuer: "ARCX", image: "/images/certs/cti101.webp" },
-
+    { status: "done", name: "CBTP", issuer: "Certified Blue Team Practitioner — SecOps Group", image: "/images/certs/cbtp.webp" },
+    { status: "done", name: "CNSP", issuer: "SecOps Group", image: "/images/certs/cnsp.webp" },
+    { status: "done", name: "Certified Ethical Hacker (CEH)", issuer: "EC-Council", image: "/images/certs/ceh.png", highlight: true },
+    { status: "done", name: "C3SA", issuer: "CyberWarFare Labs", image: "/images/certs/c3sa.webp" },
+    { status: "done", name: "CTI 101", issuer: "ARCX", image: "/images/certs/cti101.webp" },
 ];
 
 export const ACHIEVEMENTS = [

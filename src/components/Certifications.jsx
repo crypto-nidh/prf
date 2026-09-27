@@ -68,6 +68,7 @@ export default function Certifications() {
                         decoding="async"
                         width={400}
                         height={180}
+                        className={cert.highlight ? 'cert-image cert-image--icon' : 'cert-image'}
                         style={{
                           width: '100%',
                           height: '180px',

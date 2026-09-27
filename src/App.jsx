@@ -99,7 +99,7 @@ function App() {
               aria-hidden="true"
               style={{ width: '30px', height: '30px', display: 'block' }}
             />
-            NIDHI_
+            HAZEL
           </a>
           
           <button 

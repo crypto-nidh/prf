@@ -48,26 +48,6 @@ export default function About() {
             </div>
           </div>
 
-          <div className="about-cards">
-            {ABOUT.cards.map((c, i) => (
-              <motion.div 
-                key={i}
-                whileHover={{ scale: 1.05 }}
-                style={{
-                  border: '1px solid var(--panel-border)',
-                  padding: '1.5rem',
-                  borderTop: '3px solid var(--neon-green)',
-                  background: 'var(--bg-panel)',
-                  backdropFilter: 'blur(12px)',
-                  WebkitBackdropFilter: 'blur(12px)'
-                }}
-              >
-                <div style={{ fontSize: '0.8rem', color: 'var(--neon-green)', marginBottom: '1rem' }}>{c.idx}</div>
-                <h3 style={{ marginBottom: '0.5rem', color: 'var(--text-main)' }}>{c.title}</h3>
-                <p style={{ fontSize: '0.9rem', color: 'var(--text-dim)' }}>{c.text}</p>
-              </motion.div>
-            ))}
-          </div>
 
         </motion.div>
       </div>

@@ -54,9 +54,6 @@ export default function Experience() {
                   
                   <div className="job-meta">
                     <div style={{ color: 'var(--text-dim)', fontSize: '0.9rem' }}>{job.date}</div>
-                    <div style={{ display: 'inline-block', padding: '4px 8px', border: '1px solid var(--neon-green)', color: 'var(--neon-green)', fontSize: '0.7rem' }}>
-                      ✓ COMPLETED
-                    </div>
                   </div>
                   
                   <ul style={{ listStyle: 'none', padding: 0 }}>

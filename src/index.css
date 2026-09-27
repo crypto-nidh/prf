@@ -494,7 +494,7 @@ section {
 }
 
 .cert-card {
-    flex: 0 0 min(280px, calc(100vw - 3rem));
+    flex: 0 0 min(320px, calc(100vw - 3rem));
     border: 1px solid var(--panel-border);
     padding: 1.5rem;
     background: var(--bg-panel);
@@ -502,9 +502,18 @@ section {
     -webkit-backdrop-filter: blur(12px);
     display: flex;
     flex-direction: column;
-    min-height: 320px;
+    min-height: 360px;
     position: relative;
     transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.cert-image {
+    display: block;
+    width: 100%;
+    height: 220px;
+    object-fit: contain;
+    margin-bottom: 1rem;
+    background: rgba(0, 0, 0, 0.2);
 }
 
 .cert-card.is-progress {
@@ -516,6 +525,17 @@ section {
     box-shadow: 0 0 0 1px rgba(255, 196, 0, 0.6), 0 0 26px rgba(255, 196, 0, 0.35), 0 0 60px rgba(0, 240, 255, 0.12);
     background: linear-gradient(180deg, rgba(17, 24, 39, 0.96), rgba(12, 18, 28, 0.95));
     transform: translateY(-2px);
+}
+
+.cert-card--highlight .cert-image--icon {
+    width: 140px;
+    height: 140px;
+    margin: 0 auto 1rem;
+    padding: 0.85rem;
+    border-radius: 18px;
+    background: rgba(255, 196, 0, 0.08);
+    border: 1px solid rgba(255, 196, 0, 0.45);
+    box-shadow: inset 0 0 16px rgba(255, 196, 0, 0.12), 0 0 18px rgba(255, 196, 0, 0.18);
 }
 
 .cert-card--highlight .cert-status {
@@ -575,8 +595,8 @@ section {
 }
 
 .job-header img {
-    width: clamp(64px, 15vw, 100px);
-    height: clamp(64px, 15vw, 100px);
+    width: clamp(90px, 18vw, 130px);
+    height: clamp(90px, 18vw, 130px);
     object-fit: contain;
     flex-shrink: 0;
 }
