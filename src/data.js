@@ -24,7 +24,6 @@ export const SITE = {
     twitter: "https://x.com/nidhikathayat",
     twitterHandle: "@nidhikathayat",
     discord: "_hazel69",
-    resume_url: "/Nidhi_Kathayat_Resume.pdf",
     photo: "/images/profile.webp",
     locale: "en_US",
 };

@@ -119,7 +119,6 @@ function App() {
             <a href="#education" onClick={() => setMenuOpen(false)}>Education</a>
             <a href="#certifications" onClick={() => setMenuOpen(false)}>Achievements</a>
             <a href="#contact" onClick={() => setMenuOpen(false)}>Contact</a>
-            <a href={SITE.resume_url} className="cyber-btn primary" aria-label="Download resume PDF">Resume</a>
             <button 
               type="button"
               onClick={() => setTheme(theme === 'dark' ? 'girly' : 'dark')}
